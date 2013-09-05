@@ -7,7 +7,58 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToCsv.Core", "ExcelToC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToCsv.Interfaces", "ExcelToCsv.Interfaces\ExcelToCsv.Interfaces.csproj", "{B1A2CAEA-44D9-49C8-9072-8CFC40197236}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{7BABCDF2-C2A4-46D1-9668-CF80E714145B}"
+	ProjectSection(SolutionItems) = preProject
+		..\doc\CodeConventions.pdf = ..\doc\CodeConventions.pdf
+		..\doc\ProjectStructure.pdf = ..\doc\ProjectStructure.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{448885CF-BE58-47C4-86A3-1E13E917738C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{2C945199-EECF-4343-A283-2C1770BBC8CA}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+		..\stylecop\Settings.StyleCop = ..\stylecop\Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sampledata", "sampledata", "{AA3DE4FB-DD9C-4CA0-B293-5D13F3F9FB5B}"
+	ProjectSection(SolutionItems) = preProject
+		..\sampledata\TestExcel.xls = ..\sampledata\TestExcel.xls
+		..\sampledata\TestExcel.xlsx = ..\sampledata\TestExcel.xlsx
+		..\sampledata\TestExcel_EmptyRows.xls = ..\sampledata\TestExcel_EmptyRows.xls
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D184E32F-9CB9-4BD4-9581-52F5C7299779}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{28C6F251-5C17-45F3-B5B6-9DC4352F4085}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pepita", "Pepita", "{E5EF9D46-3AC1-4F8B-9D06-06CF03EE8B2C}"
+	ProjectSection(SolutionItems) = preProject
+		..\tools\Pepita\PepitaGet.dll = ..\tools\Pepita\PepitaGet.dll
+		..\tools\Pepita\PepitaGet.pdb = ..\tools\Pepita\PepitaGet.pdb
+		..\tools\Pepita\PepitaGet.targets = ..\tools\Pepita\PepitaGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3F588CE9-F838-4056-AB89-D23D26953204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestProjects", "TestProjects", "{1B0A4238-6ACC-4887-9A50-A8BE6D338E96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5148EBEB-F983-4966-8F54-754A495CEE93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NPOI 2.0", "NPOI 2.0", "{07064F29-A031-4B29-B2B3-C08DA1F70388}"
+	ProjectSection(SolutionItems) = preProject
+		..\lib\NPOI 2.0\ICSharpCode.SharpZipLib.dll = ..\lib\NPOI 2.0\ICSharpCode.SharpZipLib.dll
+		..\lib\NPOI 2.0\NPOI.dll = ..\lib\NPOI 2.0\NPOI.dll
+		..\lib\NPOI 2.0\NPOI.OOXML.dll = ..\lib\NPOI 2.0\NPOI.OOXML.dll
+		..\lib\NPOI 2.0\NPOI.OpenXml4Net.dll = ..\lib\NPOI 2.0\NPOI.OpenXml4Net.dll
+		..\lib\NPOI 2.0\NPOI.OpenXmlFormats.dll = ..\lib\NPOI 2.0\NPOI.OpenXmlFormats.dll
+		..\lib\NPOI 2.0\NPOI.XML = ..\lib\NPOI 2.0\NPOI.XML
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ExcelToCsv.ConsoleTool.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -50,5 +101,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{07064F29-A031-4B29-B2B3-C08DA1F70388} = {448885CF-BE58-47C4-86A3-1E13E917738C}
+		{3F588CE9-F838-4056-AB89-D23D26953204} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
+		{1B0A4238-6ACC-4887-9A50-A8BE6D338E96} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
+		{5148EBEB-F983-4966-8F54-754A495CEE93} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
+		{E5EF9D46-3AC1-4F8B-9D06-06CF03EE8B2C} = {28C6F251-5C17-45F3-B5B6-9DC4352F4085}
+		{CE1298E7-5036-41BD-B4F1-4161D7E3F638} = {3F588CE9-F838-4056-AB89-D23D26953204}
+		{B1A2CAEA-44D9-49C8-9072-8CFC40197236} = {3F588CE9-F838-4056-AB89-D23D26953204}
+		{7A44E1A6-B4D4-48E4-A7B4-35D880B26666} = {1B0A4238-6ACC-4887-9A50-A8BE6D338E96}
 	EndGlobalSection
 EndGlobal
