@@ -63,6 +63,7 @@
     <Compile Include="Model\CsvCellModel.cs" />
     <Compile Include="Model\CsvModel.cs" />
     <Compile Include="Model\CsvRowModel.cs" />
+    <Compile Include="Model\Exceptions\ExcelInvalidException.cs" />
     <Compile Include="Model\ProcessWorkbookResult.cs" />
     <Compile Include="Model\SheetToCsvModel.cs" />
     <Compile Include="ProcessExcel.cs" />
@@ -77,9 +78,7 @@
       <Name>ExcelToCsv.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

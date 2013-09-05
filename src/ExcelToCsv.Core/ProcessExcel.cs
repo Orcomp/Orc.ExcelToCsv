@@ -1,7 +1,10 @@
-﻿
+﻿using ExcelToCsv.Core.Model.Exceptions;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace ExcelToCsv.Core
 {
+    using System;
+    using NPOI.POIFS.FileSystem;
     using System.IO;
     using NPOI.HSSF.UserModel;
     using NPOI.SS.UserModel;
@@ -25,24 +28,88 @@ namespace ExcelToCsv.Core
             ProcessWorkbook(excelFileName).ExportToCsv(outputDirectory);
         }
 
+        /// <summary>
+        /// Try create csv files in outputDirectory for each sheet
+        /// </summary>
+        /// <param name="excelFileName">the file name of excel file</param>
+        /// <param name="outputDirectory">the working directory where new csv files will be placed</param>
+        /// <returns>true if nothing was happened, otherwize false </returns>
+        public static bool TryCreateCsv(string excelFileName, string outputDirectory)
+        {
+            if (!((new FileInfo(excelFileName)).Exists)) throw new FileNotFoundException("There are no excel files");
+            if (!((new DirectoryInfo(outputDirectory)).Exists)) throw new DirectoryNotFoundException("There are no output directory");
+
+            try
+            {
+                CreateCsv(excelFileName, outputDirectory);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Create IProcessWorkbookResult
+        /// </summary>
+        /// <param name="excelFileName">the file name of excel</param>
+        /// <returns>result of processing excelFileName</returns>
         public static IProcessWorkbookResult ProcessWorkbook(string excelFileName)
         {
+            if (!((new FileInfo(excelFileName)).Exists)) throw new FileNotFoundException("There are no excel files");
+
             // read workbook from file 
             using (var file = new FileStream(excelFileName, FileMode.Open, FileAccess.Read))
             {
                 IWorkbook workbook;
                 var fileInfo = new FileInfo(excelFileName);
-                if (fileInfo.Extension == ".xls")
+                try
                 {
-                    workbook = new HSSFWorkbook(file); // hssf workbook is using for Excel 2003
+                    if (fileInfo.Extension == ".xls")
+                    {
+                        workbook = new HSSFWorkbook(file); // hssf workbook is using for Excel 2003
+                    }
+                    else if (fileInfo.Extension == ".xlsx")
+                    {
+                        workbook = new XSSFWorkbook(file); // xssf workbook is using for Excel 2007
+                    }
+                    else
+                    {
+                        throw new ExcelInvalidException("Unknown version of file");
+                    }
+
                 }
-                else
+                catch (OfficeXmlFileException)
                 {
-                    workbook = new XSSFWorkbook(file); // xssf workbook is using for Excel 2007
+                    throw new ExcelInvalidException("Invalid excel file");
+                }
+                catch (IOException)
+                {
+                    throw new ExcelInvalidException("Cannot read headers in excel file. Possibly broken");
+                }
+                catch (ZipException)
+                {
+                    throw new ExcelInvalidException("Cannot create zip archive from xlsx file. Possibly broken");
                 }
                 return ProcessWorkbook(workbook); // and then process this workbook 
             }
 
+        }
+
+        public static bool TryProcessWorkbook(string excelFileName, out IProcessWorkbookResult workbookResult)
+        {
+            try
+            {
+                workbookResult = ProcessWorkbook(excelFileName);
+                return true;
+            }
+            catch (Exception)
+            {
+                workbookResult = null;
+                return false;
+            }
         }
 
         /// <summary>
