@@ -4,13 +4,13 @@ namespace ExcelToCsv.Tests
 {
     using System;
     using System.IO;
-    using ExcelToCsv.Core;
-    using ExcelToCsv.Core.Model.Exceptions;
+    using Core;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class TestTryProcessWorkbook
     {
+        #region private helpers
         /// <summary>
         /// Internal method to process excel file with expected worksheets
         /// </summary>
@@ -29,7 +29,10 @@ namespace ExcelToCsv.Tests
                 Assert.AreEqual(expectedCorrectWorksheets, resultProcessing.SheetToCsvModels.Count);
             }
         }
+        #endregion
 
+        #region Excel2003 test methods
+        #region Correct test methods
         /// <summary>
         /// Test that we can open excel 2003 files
         /// </summary>
@@ -38,7 +41,32 @@ namespace ExcelToCsv.Tests
         {
             TestTryProcessing("TestExcel2003.xls", 3, true);
         }
+        #endregion
 
+        #region Test methods with catching exception
+        /// <summary>
+        /// Test that file that actually 2007 but have extension like 2003 will be processed
+        /// </summary>
+        [TestMethod]
+        public void TestExcel2003Invalid()
+        {
+            TestTryProcessing("TestExcel2003Invalid.xls", 3, false);
+        }
+
+        /// <summary>
+        /// Test that we'll correctly process situation when file with extension 2003 Excel was broken 
+        /// (delete some important part from excel file via notepad)
+        /// </summary>
+        [TestMethod]
+        public void TestExcel2003Broken()
+        {
+            TestTryProcessing("TestExcel2003Broken.xls", 3, false);
+        }
+        #endregion
+        #endregion
+
+        #region Excel2007 and Excel2010 test methods
+        #region Correct test methods
         /// <summary>
         /// Test that we can open excel 2007 files
         /// </summary>
@@ -60,16 +88,9 @@ namespace ExcelToCsv.Tests
             // so I need to use second file for test purposing
             TestTryProcessing("TestExcel2010_2.xlsx", 3, true);
         }
+        #endregion
 
-        /// <summary>
-        /// Test that file that actually 2007 but have extension like 2003 will be processed
-        /// </summary>
-        [TestMethod]
-        public void TestExcel2003Invalid()
-        {
-            TestTryProcessing("TestExcel2003Invalid.xls", 3, false);
-        }
-
+        #region Test methods with catching exception
         /// <summary>
         /// Test that file that actually 2003 but have extension like 2007 will be processed
         /// </summary>
@@ -79,6 +100,19 @@ namespace ExcelToCsv.Tests
             TestTryProcessing("TestExcel2007Invalid.xlsx", 3, false);
         }
 
+        /// <summary>
+        /// Test that we'll correctly process situation when file with extension 2007 Excel was broken 
+        /// (delete some important part from excel file via notepad)
+        /// </summary>
+        [TestMethod]
+        public void TestExcel2007Broken()
+        {
+            TestTryProcessing("TestExcel2007Broken.xlsx", 3, false);
+        }
+        #endregion
+        #endregion
+
+        #region Common test methods
         /// <summary>
         /// Test that we'll return FileNotFound exception if there are no excel file with this name 
         /// </summary>
@@ -96,26 +130,6 @@ namespace ExcelToCsv.Tests
         {
             TestTryProcessing("veryveryinvalid.txt", 3, false);
         }
-
-        /// <summary>
-        /// Test that we'll correctly process situation when file with extension 2003 Excel was broken 
-        /// (delete some important part from excel file via notepad)
-        /// </summary>
-        [TestMethod]
-        public void TestExcel2003Broken()
-        {
-            TestTryProcessing("TestExcel2003Broken.xls", 3, false);
-        }
-
-
-        /// <summary>
-        /// Test that we'll correctly process situation when file with extension 2007 Excel was broken 
-        /// (delete some important part from excel file via notepad)
-        /// </summary>
-        [TestMethod]
-        public void TestExcel2007Broken()
-        {
-            TestTryProcessing("TestExcel2007Broken.xlsx", 3, false);
-        }
+        #endregion 
     }
 }
