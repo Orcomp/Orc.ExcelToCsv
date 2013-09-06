@@ -7,30 +7,38 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class TestProcessWorkbook
+    public class TestCreateCsvWorkbook
     {
         #region private helpers
         /// <summary>
         /// Internal method to process excel file with expected worksheets
         /// </summary>
         /// <param name="fileName">fileName (note that this file should be placed in TestData folder</param>
-        /// <param name="expectedCorrectWorksheets">the expected count of correct worksheets</param>
-        private void TestProcessing(string fileName, int expectedCorrectWorksheets)
+        /// <param name="expectedCsvFiles">the expected count of correct worksheets</param>
+        private void TestCreateCsv(string fileName, int expectedCsvFiles)
         {
-            var resultProcessing = ProcessExcel.ProcessWorkbook(Path.Combine(Environment.CurrentDirectory, "TestData", fileName));
-            Assert.AreEqual(expectedCorrectWorksheets, resultProcessing.SheetToCsvModels.Count); // it should be expectedCorrectWorksheets count of csv files
+            string nameForOutputDirectory = Path.Combine(Environment.CurrentDirectory, "TestData", DateTime.Now.Ticks.ToString());
+            Directory.CreateDirectory(nameForOutputDirectory); // create directory for output csv
+
+            ProcessExcel.CreateCsv(Path.Combine(Environment.CurrentDirectory, "TestData", fileName), nameForOutputDirectory + "\\");
+
+            var filesCollection = Directory.GetFiles(nameForOutputDirectory, "*.csv");
+            
+            Directory.Delete(nameForOutputDirectory, true); // delete temp data (NOTE, we do this before Assert to avoid dirty folders)
+            
+            Assert.AreEqual(expectedCsvFiles, filesCollection.Length); // it should be expectedCsvFiles count of csv files
         }
         #endregion
 
         #region Excel2003 test methods
-        #region Correct test methods 
+        #region Correct test methods
         /// <summary>
         /// Test that we can open excel 2003 files
         /// </summary>
         [TestMethod]
         public void TestExcel2003()
         {
-            TestProcessing("TestExcel2003.xls", 3);
+            TestCreateCsv("TestExcel2003.xls", 3);
         }
         #endregion
 
@@ -43,7 +51,7 @@
         {
             try
             {
-                TestProcessing("TestExcel2003Invalid.xls", 3);
+                TestCreateCsv("TestExcel2003Invalid.xls", 3);
             }
             catch (ExcelInvalidException)
             {
@@ -60,7 +68,7 @@
         {
             try
             {
-                TestProcessing("TestExcel2003Broken.xls", 3);
+                TestCreateCsv("TestExcel2003Broken.xls", 3);
             }
             catch (ExcelInvalidException)
             {
@@ -79,7 +87,7 @@
         [TestMethod]
         public void TestExcel2007()
         {
-            TestProcessing("TestExcel2007.xlsx", 3);
+            TestCreateCsv("TestExcel2007.xlsx", 3);
         }
 
 
@@ -89,11 +97,11 @@
         [TestMethod]
         public void TestExcel2010()
         {
-            TestProcessing("TestExcel2010_1.xlsx", 3);
+            TestCreateCsv("TestExcel2010_1.xlsx", 3);
 
             // not sure that this files are different from 2007 files
             // so I need to use second file for test purposing
-            TestProcessing("TestExcel2010_2.xlsx", 3);
+            TestCreateCsv("TestExcel2010_2.xlsx", 3);
         }
         #endregion
 
@@ -107,7 +115,7 @@
         {
             try
             {
-                TestProcessing("TestExcel2007Invalid.xlsx", 3);
+                TestCreateCsv("TestExcel2007Invalid.xlsx", 3);
             }
             catch (ExcelInvalidException)
             {
@@ -124,7 +132,7 @@
         {
             try
             {
-                TestProcessing("TestExcel2007Broken.xlsx", 3);
+                TestCreateCsv("TestExcel2007Broken.xlsx", 3);
             }
             catch (ExcelInvalidException)
             {
@@ -144,7 +152,7 @@
         {
             try
             {
-                TestProcessing("BadDataBadDataBadData123421", 3);
+                TestCreateCsv("BadDataBadDataBadData123421", 3);
             }
             catch (FileNotFoundException)
             {
@@ -160,9 +168,30 @@
         {
             try
             {
-                TestProcessing("veryveryinvalid.txt", 3);
+                TestCreateCsv("veryveryinvalid.txt", 3);
             }
             catch (ExcelInvalidException)
+            {
+                //good exception
+            }
+        }
+
+        /// <summary>
+        /// Test that we'll correctly process situation when we try to write in unexisting folder
+        /// </summary>
+        [TestMethod]
+        public void TestUnexistingFolder()
+        {
+            try
+            {
+                string unexistedFolder;
+                do
+                {
+                    unexistedFolder = "E:\\" + DateTime.Now.Ticks.ToString();
+                } while (Directory.Exists(unexistedFolder));
+                ProcessExcel.CreateCsv(Path.Combine(Environment.CurrentDirectory, "TestData", "TestExcel2003.xls"), unexistedFolder + "\\");
+            }
+            catch (DirectoryNotFoundException)
             {
                 //good exception
             }

@@ -25,6 +25,8 @@ namespace ExcelToCsv.Core
         /// <param name="outputDirectory">the working directory where new csv files will be placed</param>
         public static void CreateCsv(string excelFileName, string outputDirectory)
         {
+            if (!((new FileInfo(excelFileName)).Exists)) throw new FileNotFoundException("There are no excel files");
+            if (!((new DirectoryInfo(outputDirectory)).Exists)) throw new DirectoryNotFoundException("There are no output directory");
             ProcessWorkbook(excelFileName).ExportToCsv(outputDirectory);
         }
 
@@ -36,9 +38,6 @@ namespace ExcelToCsv.Core
         /// <returns>true if nothing was happened, otherwize false </returns>
         public static bool TryCreateCsv(string excelFileName, string outputDirectory)
         {
-            if (!((new FileInfo(excelFileName)).Exists)) throw new FileNotFoundException("There are no excel files");
-            if (!((new DirectoryInfo(outputDirectory)).Exists)) throw new DirectoryNotFoundException("There are no output directory");
-
             try
             {
                 CreateCsv(excelFileName, outputDirectory);
