@@ -47,7 +47,7 @@ namespace ExcelToCsv.Tests
         /// <summary>
         /// Test that we can open excel 2003 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2003()
         {
             TestTryCreateCsv("TestExcel2003.xls", 3, true);
@@ -82,7 +82,7 @@ namespace ExcelToCsv.Tests
         /// <summary>
         /// Test that we can open excel 2007 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2007()
         {
             TestTryCreateCsv("TestExcel2007.xlsx", 3, true);
@@ -92,7 +92,7 @@ namespace ExcelToCsv.Tests
         /// <summary>
         /// Test that we can open excel 2010 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2010()
         {
             TestTryCreateCsv("TestExcel2010_1.xlsx", 3, true);

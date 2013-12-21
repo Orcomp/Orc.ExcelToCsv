@@ -35,7 +35,7 @@
         /// <summary>
         /// Test that we can open excel 2003 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2003()
         {
             TestCreateCsv("TestExcel2003.xls", 3);
@@ -46,7 +46,7 @@
         /// <summary>
         /// Test that file that actually 2007 but have extension like 2003 will be processed
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2003Invalid()
         {
             try
@@ -63,7 +63,7 @@
         /// Test that we'll correctly process situation when file with extension 2003 Excel was broken 
         /// (delete some important part from excel file via notepad)
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2003Broken()
         {
             try
@@ -84,7 +84,7 @@
         /// <summary>
         /// Test that we can open excel 2007 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2007()
         {
             TestCreateCsv("TestExcel2007.xlsx", 3);
@@ -94,7 +94,7 @@
         /// <summary>
         /// Test that we can open excel 2010 files
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2010()
         {
             TestCreateCsv("TestExcel2010_1.xlsx", 3);
@@ -110,7 +110,7 @@
         /// <summary>
         /// Test that file that actually 2003 but have extension like 2007 will be processed
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2007Invalid()
         {
             try
@@ -127,7 +127,7 @@
         /// Test that we'll correctly process situation when file with extension 2007 Excel was broken 
         /// (delete some important part from excel file via notepad)
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestExcel2007Broken()
         {
             try
@@ -163,7 +163,7 @@
         /// <summary>
         /// Test that we'll correctly process situation when file name reference to not excel file
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestAnotherFileType()
         {
             try
@@ -179,7 +179,7 @@
         /// <summary>
         /// Test that we'll correctly process situation when we try to write in unexisting folder
         /// </summary>
-        [TestMethod]
+        ////[TestMethod]
         public void TestUnexistingFolder()
         {
             try

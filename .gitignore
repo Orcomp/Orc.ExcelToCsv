@@ -88,4 +88,13 @@ obj
 # mstest test results
 TestResults
 
+packages
 output/
+
+# NuGet.key
+[Nn]u[Gg]et.key
+ 
+# FAKE build
+tools/FAKE
+build-log.xml
+build-log.txt
