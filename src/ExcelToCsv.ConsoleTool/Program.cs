@@ -45,6 +45,7 @@ namespace ExcelToCsv.ConsoleTool
             }
             else
             {
+                Console.WriteLine(error);
                 Console.WriteLine("Error have been occured while processing ");
             }
         }
