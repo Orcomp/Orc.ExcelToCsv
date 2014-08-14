@@ -5,17 +5,27 @@
 *.suo
 *.user
 *.sln.docstates
-
-.nuget/
+*.g.cs
 
 # Build results
+[Bb]in/
+[Cc]lientbin/
 [Dd]ebug/
 [Rr]elease/
+[Oo]utput*/
+[Pp]ackages*/
+bin
+obj
+[Ll]ib/
 *_i.c
 *_p.c
+*.chk
+*.ide
 *.ilk
+*.jrs
 *.meta
 *.obj
+*.orig
 *.pch
 *.pdb
 *.pgc
@@ -27,6 +37,7 @@
 *.tlh
 *.tmp
 *.vspscc
+*.xap
 .builds
 
 # Visual C++ cache files
@@ -42,6 +53,29 @@ ipch/
 
 # ReSharper is a .NET coding add-in
 _ReSharper*
+*.resharper.user
+
+# Catel
+CatelLogging.txt
+
+# Dotcover
+*.dotCover
+*.dotsettings.user
+
+# Finalbuilder
+*.fbl7
+*.fb7lck
+*.fbpInf
+
+# Ghostdoc
+*.GhostDoc.xml
+
+# Deployments
+deployment/FinalBuilder/backup
+deployment/InnoSetup/template/templates
+deployment/InnoSetup/template/snippets
+deployment/InnoSetup/template/libraries
+deployment/InnoSetup/template/doc
 
 # Installshield output folder 
 [Ee]xpress
@@ -83,20 +117,6 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
-
 # mstest test results
 TestResults
-
-packages
-output/
-
-# NuGet.key
-[Nn]u[Gg]et.key
- 
-# FAKE build
-tools/FAKE
-build-log.xml
-build-log.txt
+src/UpgradeLog.htm
