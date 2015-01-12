@@ -5,10 +5,10 @@ namespace Orc.ExcelToCsv.Test
 {
     using System;
     using System.IO;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
+    using NUnit.Framework;
 
-    [TestClass]
+    [TestFixture]
     public class TestTryCreateCsvWorkbook
     {
         #region private helpers
@@ -46,7 +46,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we can open excel 2003 files
         /// </summary>
-        ////[TestMethod]
+        ////[TestCase]
         public void TestExcel2003()
         {
             TestTryCreateCsv("TestExcel2003.xls", 3, true);
@@ -57,7 +57,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that file that actually 2007 but have extension like 2003 will be processed
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestExcel2003Invalid()
         {
             TestTryCreateCsv("TestExcel2003Invalid.xls", 3, false);
@@ -67,7 +67,7 @@ namespace Orc.ExcelToCsv.Test
         /// Test that we'll correctly process situation when file with extension 2003 Excel was broken 
         /// (delete some important part from excel file via notepad)
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestExcel2003Broken()
         {
                 TestTryCreateCsv("TestExcel2003Broken.xls", 3, false);
@@ -81,7 +81,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we can open excel 2007 files
         /// </summary>
-        ////[TestMethod]
+        ////[TestCase]
         public void TestExcel2007()
         {
             TestTryCreateCsv("TestExcel2007.xlsx", 3, true);
@@ -91,7 +91,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we can open excel 2010 files
         /// </summary>
-        ////[TestMethod]
+        ////[TestCase]
         public void TestExcel2010()
         {
             TestTryCreateCsv("TestExcel2010_1.xlsx", 3, true);
@@ -107,7 +107,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that file that actually 2003 but have extension like 2007 will be processed
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestExcel2007Invalid()
         {
             TestTryCreateCsv("TestExcel2007Invalid.xlsx", 3, false);
@@ -117,7 +117,7 @@ namespace Orc.ExcelToCsv.Test
         /// Test that we'll correctly process situation when file with extension 2007 Excel was broken 
         /// (delete some important part from excel file via notepad)
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestExcel2007Broken()
         {
             TestTryCreateCsv("TestExcel2007Broken.xlsx", 3, false);
@@ -130,7 +130,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we'll return FileNotFound exception if there are no excel file with this name 
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestFileNotFound()
         {
             TestTryCreateCsv("BadDataBadDataBadData123421", 3, false);
@@ -139,7 +139,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we'll correctly process situation when file name reference to not excel file
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestAnotherFileType()
         {
             TestTryCreateCsv("veryveryinvalid.txt", 3, false);
@@ -148,7 +148,7 @@ namespace Orc.ExcelToCsv.Test
         /// <summary>
         /// Test that we'll correctly process situation when we try to write in unexisting folder
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestUnexistingFolder()
         {
             string unexistedFolder;

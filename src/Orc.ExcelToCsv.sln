@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv", "Orc.Excel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.Console", "Orc.ExcelToCsv.Console\Orc.ExcelToCsv.Console.csproj", "{7A44E1A6-B4D4-48E4-A7B4-35D880B26666}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.Test", "Orc.ExcelToCsv.Test\Orc.ExcelToCsv.Test.csproj", "{04469460-0BCD-4F6E-99A3-32542D909ED8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.Tests", "Orc.ExcelToCsv.Tests\Orc.ExcelToCsv.Tests.csproj", "{04469460-0BCD-4F6E-99A3-32542D909ED8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
