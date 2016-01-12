@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.Console", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.Tests", "Orc.ExcelToCsv.Tests\Orc.ExcelToCsv.Tests.csproj", "{04469460-0BCD-4F6E-99A3-32542D909ED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.ExcelToCsv.TaskRunner", "Orc.ExcelToCsv.TaskRunner\Orc.ExcelToCsv.TaskRunner.csproj", "{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,16 @@ Global
 		{04469460-0BCD-4F6E-99A3-32542D909ED8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{04469460-0BCD-4F6E-99A3-32542D909ED8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{04469460-0BCD-4F6E-99A3-32542D909ED8}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +99,7 @@ Global
 		{CE1298E7-5036-41BD-B4F1-4161D7E3F638} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
 		{7A44E1A6-B4D4-48E4-A7B4-35D880B26666} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
 		{04469460-0BCD-4F6E-99A3-32542D909ED8} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
+		{ABBB99DB-B055-4BFA-ADDB-516C5EB4BDB0} = {D184E32F-9CB9-4BD4-9581-52F5C7299779}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ExcelToCsv.ConsoleTool.vsmdi
