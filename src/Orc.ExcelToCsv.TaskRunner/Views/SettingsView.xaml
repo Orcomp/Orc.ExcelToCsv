@@ -1,0 +1,32 @@
+﻿<catel:UserControl x:Class="Orc.ExcelToCsv.TaskRunner.Views.SettingsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:catel="http://catel.codeplex.com"
+                   xmlns:orc="http://www.wildgums.net.au/orc">
+
+    <Expander IsExpanded="True" Header="Configuration" Style="{StaticResource GroupBoxExpander}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="131" />
+                <!-- 125 + 6 margin -->
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+			<orc:OpenFilePickerView Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,6,0" LabelText="Spreadsheet path" Filter="Excel spreadsheets (*.xls, *.xlsx)|*.xls;*.xlsx|All Files (*.*)|*.*"
+									SelectedFile="{Binding SpreadsheetPath, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  />
+			
+            <orc:DirectoryPickerView Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,6,0" LabelText="Output directory"
+                                     SelectedDirectory="{Binding OutputDirectory, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+
+        </Grid>
+    </Expander>
+
+</catel:UserControl>
